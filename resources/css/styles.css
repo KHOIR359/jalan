@@ -1,0 +1,13 @@
+.bg-background {
+    background-image: url('/img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-black-50 {
+    background: hsla(0, 0%, 0%, 0.5);
+}
+
+.h-50vh {
+    height: 65vh !important;
+}
