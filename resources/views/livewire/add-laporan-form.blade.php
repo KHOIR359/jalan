@@ -55,12 +55,13 @@
                     </template>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div class="grid grid-cols-1 lg:grid-cols-2" x-data="{img: `{{asset('img/contoh.jpg')}}`}">
                 <div class="flex flex-col col-span-1 mb-4 lg:items-center">
                     <label class="block mb-2 text-sm font-semibold text-gray-700 capitalize" for="photo">
-                        Contoh Jalan
+                        Contoh photo
                     </label>
-                    <img src="{{asset('img/contoh.jpg')}}" alt="contoh jalan" class="flex flex-col items-center w-64 px-4 tracking-wide text-purple-600 uppercase transition-all duration-150 ease-linear rounded-md cursor-pointer border-blue ">
+                    <img src="{{asset('img/contoh.jpg')}}" alt="contoh photo" class="object-cover w-full px-4 text-purple-600 uppercase rounded-md cursor-pointer " @click="window.open(img, '_blank')">
+                    <p class="text-sm text-gray-500">Aktifkan location stamp di kamera</p>
                 </div>
                 <div class="flex flex-col col-span-1 mb-4 lg:items-center">
                     <label class="block mb-2 text-sm font-semibold text-gray-700 capitalize" for="photo">
@@ -79,7 +80,6 @@
                         <input id="labelInput" type='file' class="hidden" wire:model="photo" />
                     </label>
                 </div>
-
             </div>
             <div class="mb-4">
                 <label class="block mb-2 text-sm font-semibold text-gray-700 capitalize" for="description">
@@ -263,5 +263,6 @@
         }
         };
         }
+
     </script>
 </div>

@@ -19,7 +19,7 @@
     <!-- akhir dari Bagian js -->
     <script></script>
     @if ($attributes['useMap'])
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW_u3PHV3bRsMPlcR3ikqH9NFRfeccLQ8&sensor=false&callback=initialize"
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW_u3PHV3bRsMPlcR3ikqH9NFRfeccLQ8&sensor=false&callback"
             type="text/javascript"></script> <!-- Key Api  -->
     @endif
     {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script> --}}
