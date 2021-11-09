@@ -1,7 +1,7 @@
 <div>
     <div class="d-none" id="map"></div>
     <div class="py-4">
-        <div class="max-w-md p-2 mx-auto bg-white border border-gray-100 rounded-lg shadow md:max-w-xl lg:px-5 lg:">
+        <div class="max-w-md p-2 pb-4 mx-2 bg-white border border-gray-100 rounded-lg shadow md:mx-auto md:max-w-xl lg:px-5 lg:">
             <div class="mb-4">
                 <h3 class="text-4xl text-center text-gray-600">Tambah Data</h3>
             </div>
@@ -47,8 +47,8 @@
                 <label class="block mb-2 text-sm font-semibold text-gray-700 capitalize" for="long">
                     Ruas Jalan
                 </label>
-                <input type="hidden" :value="selected" id="road" wire:model="road">
-                <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" x-model="search" placeholder="Click to search..." @click="optionsVisible = !optionsVisible">
+                <input type="hidden" :value="selected" value="-- Tidak Diketahui --" id="road" wire:model="road">
+                <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" x-model="search" @click="optionsVisible = !optionsVisible" placeholder="-- Tidak Diketahui --">
                 <div x-show="optionsVisible" class="overflow-y-scroll shadow max-h-48">
                     <template x-for="option in filteredOptions()">
                         <a @click.prevent="selected = option; search=option; optionsVisible = false;@this.set('road', option);" x-text="option" class="block p-2 cursor-pointer hover:bg-gray-200"></a>
@@ -58,42 +58,34 @@
             <div class="grid grid-cols-1 lg:grid-cols-2">
                 <div class="flex flex-col col-span-1 mb-4 lg:items-center">
                     <label class="block mb-2 text-sm font-semibold text-gray-700 capitalize" for="photo">
+                        Contoh Jalan
+                    </label>
+                    <img src="{{asset('img/contoh.jpg')}}" alt="contoh jalan" class="flex flex-col items-center w-64 px-4 tracking-wide text-purple-600 uppercase transition-all duration-150 ease-linear rounded-md cursor-pointer border-blue ">
+                </div>
+                <div class="flex flex-col col-span-1 mb-4 lg:items-center">
+                    <label class="block mb-2 text-sm font-semibold text-gray-700 capitalize" for="photo">
                         photo
                     </label>
                     @if ($photo)
-                    <img src="{{ $photo->temporaryUrl() }}" class="object-cover w-full mb-3 border border-gray-200 rounded-md h-44">
+                    <img onclick="document.getElementById('labelInput').click()" src="{{ $photo->temporaryUrl() }}" class="object-cover w-full mb-3 border border-gray-200 rounded-md h-44">
+
                     @endif
                     <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css" rel="stylesheet">
 
                     <label
-                           class="flex flex-col items-center w-64 px-4 py-6 tracking-wide text-purple-600 uppercase transition-all duration-150 ease-linear bg-white border rounded-md shadow-md cursor-pointer border-blue hover:bg-purple-600 hover:text-white">
+                           class="@if ($photo) hidden @endif flex flex-col items-center w-64 px-4 py-6 tracking-wide text-purple-600 uppercase transition-all duration-150 ease-linear bg-white border rounded-md shadow-md cursor-pointer border-blue hover:bg-purple-600 hover:text-white">
                         <i class="fas fa-cloud-upload-alt fa-3x"></i>
                         <span class="mt-2 text-base leading-normal">Select a file</span>
-                        <input type='file' class="hidden" wire:model="photo" />
+                        <input id="labelInput" type='file' class="hidden" wire:model="photo" />
                     </label>
                 </div>
-                <div class="flex flex-col col-span-1 mb-4 lg:items-center">
-                    <label class="block mb-2 text-sm font-semibold text-gray-700 capitalize" for="photo2">
-                        photo patokan jalan
-                    </label>
-                    @if ($photo2)
-                    <img src="{{ $photo2->temporaryUrl() }}" class="object-cover w-full mb-3 border border-gray-200 rounded-md h-44">
-                    @endif
-                    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css" rel="stylesheet">
 
-                    <label
-                           class="flex flex-col items-center w-64 px-4 py-6 tracking-wide text-purple-600 uppercase transition-all duration-150 ease-linear bg-white border rounded-md shadow-md cursor-pointer border-blue hover:bg-purple-600 hover:text-white">
-                        <i class="fas fa-cloud-upload-alt fa-3x"></i>
-                        <span class="mt-2 text-base leading-normal">Select a file</span>
-                        <input type='file' class="hidden" wire:model="photo2" />
-                    </label>
-                </div>
             </div>
             <div class="mb-4">
                 <label class="block mb-2 text-sm font-semibold text-gray-700 capitalize" for="description">
                     description
                 </label>
-                <textarea wire:model="description" rows="3" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none resize-none focus:outline-none focus:shadow-outline" id="description" type="text" placeholder="Description"></textarea>
+                <textarea required wire:model="description" rows="3" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none resize-none focus:outline-none focus:shadow-outline" id="description" type="text" placeholder="Deskripsi untuk kerusakan jalan atau lokasi lebih rinci"></textarea>
             </div>
             <div>
                 <button wire:click="addData" class="w-full py-2 font-semibold text-white bg-green-500 rounded hover:bg-green-700">Lapor</button>
@@ -179,11 +171,9 @@
         return {
         optionsVisible: false,
         search: "",
-        selected: {
-        label: "",
-        value: ""
-        },
+        selected: "-- Tidak Diketahui --",
         options: [
+            '-- Tidak Diketahui --',
             'Jl. Sp. Tugu-Darussalam - Batas Aceh Besar, Kota Banda Aceh',
             'Jl. Batas Kota Banda Aceh - Sp.Lam Ateuk, Aceh Besar',
             'Jl. Lingkar Darussalam, Kota Banda Aceh',

@@ -5,14 +5,13 @@
 
                 <div class="col-span-3">
                     <div class="grid grid-cols-2 bg-white lg:grid-cols-3 rounded-2xl">
-                        <div class="order-2 col-span-1 lg:order-1">
-                            <img src="{{asset($lapor['photo'])}}" alt="Photo Jalan" title="Photo Jalan" class="object-cover w-full h-40 rounded-r-none hover:object-contain focus:object-fill lg:h-96 rounded-2xl ">
-                        </div>
-                        <div class="order-1 col-span-2 lg:col-span-1 lg:order-2">
+                        <div class="order-1 col-span-1 lg:col-span-2">
+                            <p class="mb-3 text-xl font-bold text-center text-gray-700">Map</p>
                             <x-google.map :lapor="$lapor"></x-google.map>
                         </div>
-                        <div class="order-3 col-span-1 lg:order-3">
-                            <img src="{{asset($lapor['photo2'])}}" alt="Patokan Jalan" title="Patokan Jalan" class="object-cover w-full h-40 rounded-l-none hover:object-contain focus:object-fill lg:h-96 rounded-2xl">
+                        <div class="order-2 col-span-1 lg:order-1">
+                            <p class="mb-3 text-xl font-bold text-center text-gray-700">Gambar</p>
+                            <img src="{{asset($lapor['photo'])}}" alt="Photo Jalan" title="Photo Jalan" class="object-cover w-full h-40 rounded-l-none hover:object-contain focus:object-fill lg:h-96 rounded-2xl ">
                         </div>
                     </div>
                 </div>
