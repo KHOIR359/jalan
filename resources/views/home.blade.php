@@ -39,7 +39,7 @@
                 </div>
                 <div class="p-4">
                     <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                        @foreach ($laporan as $lapor )
+                        @foreach ($laporan->reverse() as $lapor )
                         @if ($loop->iteration > 4)
                         @break
                         @endif
