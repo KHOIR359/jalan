@@ -43,7 +43,7 @@
                         @if ($loop->iteration > 4)
                         @break
                         @endif
-                        <div class="grid grid-cols-3 col-span-1 overflow-hidden bg-white border border-gray-200 rounded-md shadow cursor-pointer hover:text-blue-800 hover:underline lg:max-h-36 hover:bg-blue-200 ">
+                        <div class="grid grid-cols-3 col-span-1 overflow-hidden bg-white border border-gray-200 rounded-md shadow-sm cursor-pointer hover:text-blue-800 hover:underline lg:max-h-36 hover:bg-blue-200 ">
                             <div class="col-span-1">
                                 <div class="h-full overflow-hidden lg:max-h-36">
                                     <a href="{{route('laporan.show', $lapor['id'] )}}">

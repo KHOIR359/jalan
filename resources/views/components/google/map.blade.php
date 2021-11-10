@@ -3,18 +3,35 @@
 
 
     <script>
+
+// @php
+//     dd((isset($laporan) && count($laporan) < 1) || (isset($lapor) && count($lapor) < 1))
+// @endphp
+
+        @if((isset($laporan) && count($laporan) < 1) || (isset($lapor) && count($lapor) < 1))
+        function initialize() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: { lat: -6.397, lng: 106.644}
+            });
+        }
+        @endif
+
+        @if((isset($laporan) && count($laporan) > 0) || (isset($lapor)  && count($lapor) > 0))
         function initialize() {
             // Variabel untuk menyimpan informasi (desc)
             var infoWindow = new google.maps.InfoWindow; // informasi lokasi atau deskripsi diambil dari database
 
             //  Variabel untuk menyimpan peta Roadmap
             var mapOptions = {
-                mapTypeId: google.maps.MapTypeId.ROADMAP // disini Lat long disimpan untuk lokasi jalan
+                mapTypeId: google.maps.MapTypeId.ROADMAP, // disini Lat long disimpan untuk lokasi jalan
+
             }
 
             // Pembuatan petanya
             var map = new google.maps.Map(document.getElementById('map'),
                 mapOptions); // mapOptions untuk lokasi log,lat , getElementById('map')
+
             // Variabel untuk menyimpan batas kordinat
             var bounds = new google.maps.LatLngBounds();
             // Pengambilan data dari database
@@ -65,6 +82,7 @@
                     map: map,
                     position: lokasi,
                     icon: icon,
+
                     animation: google.maps.Animation.DROP,
                 });
                 map.fitBounds(bounds);
@@ -79,6 +97,7 @@
                 });
             }
         }
+        @endif
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 </div>
