@@ -16,7 +16,6 @@
                         $ditolak = count($laporan->filter(function ($value, $key) {return $value['status'] == -1;}));
                         $diproses = count($laporan->filter(function ($value, $key) {return $value['status'] == 0;}));
                         $selesai = count($laporan->filter(function ($value, $key) {return $value['status'] == 1;}));
-
                         @endphp
                         <x-smallbox color="green" value="{{$selesai}}" icon="fa-check">Diterima</x-smallbox>
                         <x-smallbox color="red" value="{{$ditolak}}" icon="fa-times">Ditolak</x-smallbox>

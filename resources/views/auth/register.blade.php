@@ -2,11 +2,8 @@
 <main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
     <div class="flex">
         <div class="w-full">
-            <section class="flex flex-col mx-2 mt-5 overflow-hidden break-words bg-white rounded sm:border-1 sm:rounded-md sm:shadow-lg">
+            <section class="flex flex-col mx-2 mt-5 overflow-hidden break-words  rounded sm:border-1 sm:rounded-md sm:shadow-lg border border-gray-200">
 
-                <header class="px-6 py-5 font-semibold text-white bg-green-500 sm:py-6 sm:px-8 sm:rounded-t-md">
-                    {{ __('Register') }}
-                </header>
 
                 <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST"
                     action="{{ route('register') }}">
@@ -85,13 +82,13 @@
 
                     <div class="flex flex-wrap">
                         <button type="submit"
-                            class="w-full p-3 text-base font-bold leading-normal text-gray-100 no-underline whitespace-no-wrap bg-green-500 rounded-lg select-none hover:bg-green-700 sm:py-4">
+                            class="w-full p-3 text-base font-bold leading-normal text-gray-100 no-underline whitespace-no-wrap bg-blue-500 rounded-lg select-none hover:bg-blue-700 sm:py-4">
                             {{ __('Register') }}
                         </button>
 
                         <p class="w-full my-6 text-xs text-center text-gray-700 sm:text-sm sm:my-8">
                             {{ __('Already have an account?') }}
-                            <a class="text-green-500 no-underline hover:text-green-700 hover:underline" href="{{ route('login') }}">
+                            <a class="text-blue-500 no-underline hover:text-blue-700 hover:underline" href="{{ route('login') }}">
                                 {{ __('Login') }}
                             </a>
                         </p>

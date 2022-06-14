@@ -21,7 +21,6 @@ class CreateLaporansTable extends Migration
             $table->string('location');
             $table->string('lat');
             $table->string('long');
-            $table->string('road');
             $table->string('photo');
             $table->string('description')->nullable();
             $table->string('status');

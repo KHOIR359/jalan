@@ -1,4 +1,4 @@
-<div>
+<div class="{{isset($classes)?$classes:''}}">
     <div class="relative h-96" id="map"></div>
 
 

@@ -13,7 +13,6 @@ class AddLaporanForm extends Component
     use WithFileUploads;
     public $name;
     public $email;
-    public $road = '-- Tidak Diketahui --';
     public $phone;
     public $location;
     public $lat;
@@ -37,6 +36,7 @@ class AddLaporanForm extends Component
     public function addData()
     {
 
+
         $filename = $this->photo->storePublicly('photos');
 
         Artisan::call('storage:link');
@@ -44,7 +44,6 @@ class AddLaporanForm extends Component
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
-            'road' => $this->road,
             'location' => $this->location ?? "",
             'lat' => $this->lat,
             'long' => $this->long,
