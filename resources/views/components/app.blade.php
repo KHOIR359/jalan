@@ -60,9 +60,9 @@
                     @if(Auth::user()->role == 1)
                     <p class="block px-2 text-lg font-semibold no-underline capitalize hover:underline">{{ Auth::user()->name }}</p>
                     <hr>
-                    <a href="{{ route('home') }}" class="block no-underline hover:underline">{{ __('Home') }}</a>
                     <a href="{{ route('admin') }}" class="block no-underline hover:underline">{{ __('Dashboard') }}</a>
                     @endif
+                    <a href="{{ route('home') }}" class="block no-underline hover:underline">{{ __('Home') }}</a>
                     <a href="{{ route('logout') }}"
                        class="block no-underline hover:underline"
                        onclick="event.preventDefault();
@@ -90,15 +90,26 @@
 
                     <a href="{{ route('home') }}" class="no-underline hover:underline">{{ __('Home') }}</a>
                     <a href="{{ route('admin') }}" class="no-underline hover:underline">{{ __('Dashboard') }}</a>
-                    @endif
                     <a href="{{ route('logout') }}"
                        class="no-underline hover:underline text-red-700"
                        onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                         {{ csrf_field() }}
-                    </form>
-                    @endguest
+
+                        @else
+
+                        <a href="{{ route('home') }}" class="no-underline hover:underline">{{ __('Home') }}</a>
+                        <a href="{{ route('logout') }}"
+                           class="no-underline hover:underline text-red-700"
+                           onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            {{ csrf_field() }}
+
+                            @endif
+                        </form>
+                        @endguest
                 </nav>
             </div>
         </header>
